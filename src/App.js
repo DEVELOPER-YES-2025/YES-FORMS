@@ -3,8 +3,8 @@ import { createClient } from "@supabase/supabase-js";
 import { motion } from "framer-motion";
 
 // Replace with your Supabase keys
-const supabaseUrl = "https://pxclcppdiirguhcjbmqq.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4Y2xjcHBkaWlyZ3VoY2pibXFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE0MTY5MDYsImV4cCI6MjA2Njk5MjkwNn0.WQWpSH1cL_LAL3NBK-ZCYCzOL_V7oDHo99jnyilBqeM";
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
+const supabaseKey = process.env.REACT_APP_SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 
