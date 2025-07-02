@@ -2,3 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .bg-hero {
+    background-image: url('/src/assets/images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+
+:root {
+  --navy: #002B5B;
+  --mustard: #F4A300;
+  --darknavy: #1A1A1A;
+  --lightbg: #F8F8F8;
+}
+
+body {
+  color: var(--darknavy);
+  background-color: var(--lightbg);
+  font-family: 'Inter', sans-serif;
+}
+
+.input-field {
+  @apply border rounded-lg w-full p-3 transition duration-300 ease-in-out;
+  border-color: #ddd;
+  background-color: white;
+}
+
+.input-field:hover,
+.input-field:focus {
+  border-color: var(--mustard);
+  background-color: #fffdf4;
+  box-shadow: 0 0 0 3px rgba(244, 163, 0, 0.2);
+  outline: none;
+}
+
+button {
+  @apply font-semibold rounded-full py-3 px-6 transition duration-300 ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
