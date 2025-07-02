@@ -3,8 +3,8 @@ import { createClient } from "@supabase/supabase-js";
 import { motion } from "framer-motion";
 
 // Replace with your Supabase keys
-const supabaseUrl = "https://wkoprjwroyuroxtjrqpq.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indrb3Byandyb3l1cm94dGpycXBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzNTc1NzMsImV4cCI6MjA2NjkzMzU3M30.lgydOt5EvRseJMoYgMlOZGI8-n0ugkXcAjRrlLJ2mSE";
+const supabaseUrl = "https://pxclcppdiirguhcjbmqq.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4Y2xjcHBkaWlyZ3VoY2pibXFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE0MTY5MDYsImV4cCI6MjA2Njk5MjkwNn0.WQWpSH1cL_LAL3NBK-ZCYCzOL_V7oDHo99jnyilBqeM";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 
@@ -19,6 +19,7 @@ function App() {
     passing_year: "",
     phone_number: "",
     current_address: "",
+    naps_registered: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -57,6 +58,7 @@ function App() {
         passing_year: "",
         phone_number: "",
         current_address: "",
+        naps_registered: "",
       });
       setTimeout(() => setShowModal(false), 2500);
     } else {
@@ -77,86 +79,176 @@ function App() {
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            name="aadhar_number"
-            placeholder="Aadhar Card Number"
-            required
-            value={formData.aadhar_number}
-            onChange={handleChange}
-            className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
-          />
-          <input
-            type="text"
-            name="full_name"
-            placeholder="Full Name"
-            required
-            value={formData.full_name}
-            onChange={handleChange}
-            className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
-          />
-          <input
-            type="date"
-            name="dob"
-            required
-            value={formData.dob}
-            onChange={handleChange}
-            className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
-          />
-          <input
-            type="text"
-            name="iti_name"
-            placeholder="Name of ITI with Taluka and District"
-            required
-            value={formData.iti_name}
-            onChange={handleChange}
-            className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
-          />
-          <input
-            type="text"
-            name="trade_name"
-            placeholder="Name of Trade"
-            required
-            value={formData.trade_name}
-            onChange={handleChange}
-            className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
-          />
-          <select
-            name="training_period"
-            required
-            value={formData.training_period}
-            onChange={handleChange}
-            className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
-          >
-            <option value="1 Year">1 Year</option>
-            <option value="2 Year">2 Year</option>
-          </select>
-          <input
-            type="text"
-            name="passing_year"
-            placeholder="ITI Passing Year / Exam Appeared Year"
-            required
-            value={formData.passing_year}
-            onChange={handleChange}
-            className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
-          />
-          <input
-            type="text"
-            name="phone_number"
-            placeholder="Phone Number"
-            required
-            value={formData.phone_number}
-            onChange={handleChange}
-            className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
-          />
-          <textarea
-            name="current_address"
-            placeholder="Current Address"
-            required
-            value={formData.current_address}
-            onChange={handleChange}
-            className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
-          ></textarea>
+          <div className="mb-2">
+              <label className="block text-gray-700 font-medium mb-1">Aadhar Card Number</label>
+              <div className="flex space-x-4">
+                  <input
+                    type="text"
+                    name="aadhar_number"
+                    placeholder="Aadhar Card Number"
+                    required
+                    value={formData.aadhar_number}
+                    onChange={handleChange}
+                    className="border p-4 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
+                 />
+              </div>
+          </div>
+
+          
+          <div className="mb-2">
+              <label className="block text-gray-700 font-medium mb-1">Full Name</label>
+              <div className="flex space-x-4">
+                <input
+                  type="text"
+                  name="full_name"
+                  placeholder="Full Name"
+                  required
+                  value={formData.full_name}
+                  onChange={handleChange}
+                  className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
+                />
+              </div>
+          </div>
+
+
+          <div className="mb-2">
+              <label className="block text-gray-700 font-medium mb-1">Date Of Birth</label>
+              <div className="flex space-x-4">
+                  <input
+                    type="date"
+                    name="dob"
+                    placeholder="Date Of Birth"
+                    required
+                    value={formData.dob}
+                    onChange={handleChange}
+                    className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  />
+              </div>
+          </div>
+
+          <div className="mb-2">
+              <label className="block text-gray-700 font-medium mb-1">Name of ITI with Taluka and District</label>
+              <div className="flex space-x-4">
+                  <input
+                    type="text"
+                    name="iti_name"
+                    placeholder="Name of ITI with Taluka and District"
+                    required
+                    value={formData.iti_name}
+                    onChange={handleChange}
+                    className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  />
+              </div>
+          </div>
+
+          <div className="mb-2">
+              <label className="block text-gray-700 font-medium mb-1">Name of Trade</label>
+              <div className="flex space-x-4">
+                <input
+                  type="text"
+                  name="trade_name"
+                  placeholder="Name of Trade"
+                  required
+                  value={formData.trade_name}
+                  onChange={handleChange}
+                  className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
+                />
+              </div>
+          </div>
+
+
+          <div className="mb-2">
+              <label className="block text-gray-700 font-medium mb-1">Training Period</label>
+              <div className="flex space-x-4">
+                <select
+                  name="training_period"
+                  required
+                  value={formData.training_period}
+                  onChange={handleChange}
+                  className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    >
+                  <option value="1 Year">1 Year</option>
+                  <option value="2 Year">2 Year</option>
+                </select>
+              </div>
+          </div>
+
+
+          <div className="mb-2">
+              <label className="block text-gray-700 font-medium mb-1">ITI Passing Year / Exam Appeared Year</label>
+              <div className="flex space-x-4">
+                <input
+                  type="text"
+                  name="passing_year"
+                  placeholder="ITI Passing Year / Exam Appeared Year"
+                  required
+                  value={formData.passing_year}
+                  onChange={handleChange}
+                  className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
+                />
+              </div>
+          </div>
+
+          
+          <div className="mb-2">
+              <label className="block text-gray-700 font-medium mb-1">Phone Number</label>
+              <div className="flex space-x-4">
+                <input
+                  type="text"
+                  name="phone_number"
+                  placeholder="Phone Number"
+                  required
+                  value={formData.phone_number}
+                  onChange={handleChange}
+                  className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
+                />
+              </div>
+          </div>
+
+
+          <div className="mb-2">
+              <label className="block text-gray-700 font-medium mb-1">Residing Address</label>
+              <div className="flex space-x-4">
+                <textarea
+                  name="current_address"
+                  placeholder="Current Address"
+                  required
+                  value={formData.current_address}
+                  onChange={handleChange}
+                  className="border p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-purple-400"
+                ></textarea>
+              </div>
+          </div>
+
+
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">NAPS Portal Registered</label>
+            <div className="flex space-x-4">
+              <label className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  name="naps_registered"
+                  value="Yes"
+                  checked={formData.naps_registered === "Yes"}
+                  onChange={handleChange}
+                  className="form-radio"
+                />
+                <span>Yes</span>
+              </label>
+              <label className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  name="naps_registered"
+                  value="No"
+                  checked={formData.naps_registered === "No"}
+                  onChange={handleChange}
+                  className="form-radio"
+                />
+                <span>No</span>
+              </label>
+            </div>
+         </div>
+
           <button
             type="submit"
             disabled={loading}
@@ -164,6 +256,7 @@ function App() {
           >
             {loading ? "Submitting..." : "Submit Details"}
           </button>
+
         </form>
 
         {showModal && (
@@ -182,3 +275,4 @@ function App() {
 }
 
 export default App;
+
